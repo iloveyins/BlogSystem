@@ -1,0 +1,29 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" href="/Public/images/Logo_40.png" type="image/x-icon">
+        <!-- layui.css -->
+        <link href="/Public/plugin/layui/css/layui.css" rel="stylesheet" />
+        <!-- 本页样式 -->
+        <link href="/Public/css/Admin/Login.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="mask"></div>
+        <div class="main">
+            <h1><span style="font-size: 84px;">B</span><span style="font-size:30px;">log</span></h1>
+            <p id="time"></p>
+            <div class="enter">
+                Please&nbsp;&nbsp;Click&nbsp;&nbsp;Enter
+            </div>
+        </div>
+        <!-- layui.js -->
+        <script src="/Public/plugin/layui/layui.js"></script>
+        <!-- layui规范化用法 -->
+        <script type="text/javascript">
+            layui.config({
+                base: '/Public/js/Admin/'
+            }).use('Login');
+        </script>
+    </body>
+</html>
