@@ -56,7 +56,7 @@
                                     </a>
                                 </dd>
                                 <dd>
-                                    <a href="login.html"><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
+                                    <a onclick="javascript:window.location.href='Admin.php?c=Login&a=outLogin'" ><i class="fa fa-sign-out" aria-hidden="true"></i> 注销</a>
                                 </dd>
                             </dl>
                         </li>

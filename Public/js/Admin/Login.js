@@ -44,6 +44,8 @@ layui.define(['element', 'layer', 'form'], function (exports) {
         },"JSON");
         return false;
     });
+
+
     //检测键盘按下
     $('body').keydown(function (e) {
         if (e.keyCode == 13) {  //Enter键

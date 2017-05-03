@@ -15,9 +15,9 @@ use  Think\Controller;
 class LoginController extends Controller
 {
     function Index(){
-        // if(session('adminUser')){
-        //     $this->redirect('/Admin.php?c=Index');
-        // }
+         if(session('adminUser')){
+             $this->redirect('/Admin.php?Index&a=Index');
+         }
         $this->display();
     }
 
@@ -34,10 +34,17 @@ class LoginController extends Controller
         if(!$ret){
             return show(0,'用户名不存在');
         }
+
         if($ret['pwd'] != getMd5Password($pwd)){
             return show(0,'密码错误');
         }
+
         session('adminUser',$ret);
         return show(1,"登录成功");
+    }
+
+    function outLogin(){
+        session('adminUser',null);
+        echo "<script> parent.location.href='Admin.php'</script>";
     }
 }
