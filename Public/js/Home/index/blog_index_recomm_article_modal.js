@@ -1,3 +1,4 @@
+'use strict';
 var Flash;
 (function(Flash) {
     var Home;
