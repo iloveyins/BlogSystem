@@ -3,9 +3,9 @@ namespace Home\Controller;
 
 use Think\Controller;
 
-class IndexController extends Controller
+class BlogDetailController extends Controller
 {
-    public function index()
+    public function blogDetail()
     {
         $this->display();
     }
