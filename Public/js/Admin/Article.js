@@ -9,8 +9,7 @@
 layui.define(['element', 'layer', 'form'], function (exports) {
     var form = layui.form();
     var $ = layui.jquery;
-    from.on('click(addArticle)',function(){
-
-        alert('asdf');
-    });
+    // from.on('click(addArticle)',function(){
+    //     alert('asdf');
+    // });
 });

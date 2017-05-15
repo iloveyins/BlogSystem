@@ -14,7 +14,7 @@ use Think\Controller;
 
 class ArticleController extends CommonController
 {
-    function index(){
+    function Index(){
         $this->display();
     }
 

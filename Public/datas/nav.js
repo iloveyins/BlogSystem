@@ -9,7 +9,7 @@ var navs = [{
 	}, {
 		"title": "资源管理",
 		"icon": "&#xe63c;",
-		"href": "form.html"
+		"href": "Admin.php?m=Admin&c=Menu"
 	}, {
 		"title": "时光抽管理",
 		"icon": "&#xe63c;",

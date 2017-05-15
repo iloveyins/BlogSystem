@@ -39,7 +39,8 @@ layui.define(['element', 'layer', 'form'], function (exports) {
              }
             if(result.status == 1){
                 layer.msg(result.message);
-                window.location.href = 'Admin.php?c=Index';
+                Header("Location:Admin.php?c=Index");
+                //window.location.href = 'Admin.php?c=Index';
             }
         },"JSON");
         return false;

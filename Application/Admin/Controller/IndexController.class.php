@@ -21,7 +21,7 @@ class IndexController extends Controller
         $this->display();
     }
     //文章管理
-    function  ArticleManage(){
+    function  Article(){
         $this->display();
     }
 }
