@@ -3,7 +3,7 @@
  * @Author: anchen
  * @Date:   2017-04-26 20:00:43
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-04-26 20:25:46
+ * @Last Modified time: 2017-05-15 11:38:16
  */
 namespace Admin\Controller;
 use Think\Controller;
@@ -26,7 +26,7 @@ class CommonController extends Controller
         $isLogin = $this->isLogin();
         if(!$isLogin){
             //跳到登录页面
-            $this->redirect('Admin.php?c=Login');
+            $this->redirect('/Admin.php?c=Login');
        }
     }
 
@@ -35,7 +35,7 @@ class CommonController extends Controller
      * @return array
      */
     public function getLoginUser(){
-        return session('AdminUser');
+        return session('blogadminUser');
     }
 
     /**
