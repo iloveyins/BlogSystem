@@ -109,15 +109,6 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             layer.msg('操作成功');
         }, 300);
     });
-    //添加数据
-    $('#addArticle').click(function () {
-        var index = layer.load(1);
-        setTimeout(function () {
-            layer.close(index);
-            layer.msg('打开添加窗口');
-        }, 500);
-    });
-
     //输出接口，主要是两个函数，一个删除一个编辑
     var datalist = {
         deleteData: function (id) {
@@ -133,7 +124,5 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             layer.msg('编辑Id为【' + id + '】的数据');
         }
     };
-
-
     exports('datalist', datalist);
 });
