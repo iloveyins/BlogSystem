@@ -5,7 +5,7 @@ var Flash;
      * @method get
      * @param  {string} url   [description]
      * @param  {object} query [description]
-     * @return {Promise}       [description]
+     * @return {Deferred}       [description]
      */
     function get(url, query) {
         return $.ajax({
@@ -22,7 +22,7 @@ var Flash;
      * @method post
      * @param  {string} url    [description]
      * @param  {object} params [description]
-     * @return {Promise}        [description]
+     * @return {Deferred}        [description]
      */
     function post(url, params) {
         return $.ajax({

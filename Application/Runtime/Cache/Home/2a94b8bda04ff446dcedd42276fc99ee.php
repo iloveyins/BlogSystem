@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="/Public/plugin/bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="/Public/css/Home/head.css"></link>
         <link rel="stylesheet" href="/Public/css/Home/home.css"/>
+        <script src="/Public/js/Lib/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="/Public/js/_Shared/common/ajax_utils.js" type="text/javascript"></script>
+        <script src="/Public/js/_Shared/common/dialog_utils.js" type="text/javascript"></script>
+        <script src="/Public/plugin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <title></title>
     </head>
     <body class="scrollbar">
@@ -66,11 +70,6 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="/Public/plugin/bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="/Public/plugin/bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/Public/css/Home/head.css"></link>
-        <link rel="stylesheet" href="/Public/css/Home/home.css"/>
-
     </head>
     <body class="scrollbar">
         <!-- /header -->
@@ -394,10 +393,10 @@
                 </div>
             </div>
         </div>
-
         <div class="mod"></div>
-        <script src="/Public/js/Lib/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="/Public/plugin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/Public/js/Home/index/blog_index_recomm_article_modal.js" charset="utf-8"></script>
+        <script src="/Public/js/Home/index/blog_index_top_article_modal.js" charset="utf-8"></script>
+        <script src="/Public/js/Home/index/blog_index_page.js" charset="utf-8"></script>
     </body>
 </html>
 

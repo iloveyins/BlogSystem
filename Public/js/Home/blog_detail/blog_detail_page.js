@@ -24,6 +24,11 @@ var Flash;
             BlogDetailPage.prototype._api = function() {
                 var self = this;
                 return {
+                    /**
+                     * [获取博客列表]
+                     * @param  {Object} query [参数]
+                     * @return {Deferred}       [延迟对象]
+                     */
                     getBlogDetail: function(query) {
                         return Flash.get('', query);
                     }

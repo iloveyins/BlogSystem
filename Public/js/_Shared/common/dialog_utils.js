@@ -34,4 +34,4 @@ var Flash;
     }
     Flash.confirm = confirm;
 
-}(Flash || Flash = {}));
+}(Flash || (Flash = {})));
