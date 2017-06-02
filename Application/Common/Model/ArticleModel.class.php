@@ -17,7 +17,7 @@ class ArticleModel extends Model{
     }
     //获取文章信息
     public function getArticleList(){
-        $ret = $this->_db->find();
+        $ret = $this->_db->select();
         return $ret;
     }
     //添加文章
@@ -25,14 +25,14 @@ class ArticleModel extends Model{
         if(!$data || !is_array($data)){
             return 0;
         }
-        $data['ID'] =100001;
-        $data['PUSH_TIME']=date("Y/m/d");
-        $data['ACC_NUM']=0;
-        $data['AUTH']="";
-        $data['BROESE_NUM']=0;
-        $data['ACCE_ID']=0;
-        $sqls =  $this->_db->add($data);
-        return "";
+        $users = session("blogadminUser");
+        $data['author']=$users['user_name'];
+        $data['create_time']=date("Y/m/d");
+        $data['acc_num']=0;
+        $data['auth']="";
+        $data['browse_num']=0;
+        $data['acce_id']=0;
+        return $this->_db->add($data);
     }
     //更新文章信息
     public function updateArticle(){

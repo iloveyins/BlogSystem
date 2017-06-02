@@ -11,6 +11,7 @@
 */
 namespace Admin\Controller;
 use Think\Controller;
+use Think\Page;
 
 class ArticleController extends CommonController
 {
@@ -18,7 +19,20 @@ class ArticleController extends CommonController
         $this->display();
     }
 
-    //显示添加文章
+    function playArticle(){
+        $pageData = $_POST;
+        $art = M('article');
+        import('ORG.Util.Page');
+        $count =$art->count();
+        $page =new Page($count,1);
+        $show =$page->show();
+        $rets = $art->order('create_Time')
+            ->limit(1,2)
+            ->select();
+        return PageContent($rets,$count);
+    }
+
+    //显示添加文章弹出框
     function addArticle(){
         $this->display();
     }
@@ -40,6 +54,7 @@ class ArticleController extends CommonController
 //            if(!isset($_POST['author']) || !$_POST['author']){
 //                return show(0,"发布人不能为空");
 //            }
+
 
             $ret = D("Article")->insertAricle($_POST);
             if($ret){

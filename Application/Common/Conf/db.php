@@ -11,7 +11,7 @@ return array(
     'DB_USER' => 'root',
     'DB_PWD' =>'960221',
     'DB_PORT' => 3306,
-    'DB_NAME' => 'blogsystem',
+    'DB_NAME' => 'blogdb',
     'DB_CHARSET' =>'utf8',
     'DB_PREFIX' =>'t_',//表前缀
 );

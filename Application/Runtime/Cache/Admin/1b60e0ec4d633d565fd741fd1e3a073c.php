@@ -57,7 +57,7 @@
 </head>
 <body>
 <div style="padding: 10px">
-    <fieldset id="dataConsole" class="layui-elem-field layui-field-title"  style="display:none;">
+    <fieldset id="dataConsole" class="layui-elem-field layui-field-title"  style="">
         <legend>控制台</legend>
         <div class="layui-field-box">
             <div id="articleIndexTop">
@@ -91,7 +91,7 @@
             </div>
         </div>
     </fieldset>
-    <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field" style="display:none;">
+    <fieldset id="dataList" class="layui-elem-field layui-field-title sys-list-field" style=";">
         <legend style="text-align:center;">文章列表</legend>
         <div class="layui-field-box">
             <div id="dataContent" class="">
@@ -118,11 +118,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>2017-03-22 23:07</td>
-                        <td>不落阁后台模板源码分享</td>
-                        <td>Absolutely</td>
-                        <td>Web前端</td>
+                    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                        <td><?php echo ($vo["create_Time"]); ?></td>
+                        <td><?php echo ($vo["title"]); ?></td>
+                        <td><?php echo ($vo["author"]); ?></td>
+                        <td><?php echo ($vo["type_name"]); ?></td>
                         <td>
                             <form class="layui-form" action="">
                                 <div class="layui-form-item" style="margin:0;">
@@ -143,10 +143,13 @@
                         <td>
                             <button class="layui-btn layui-btn-small layui-btn-danger"><i class="layui-icon">&#xe640;</i></button>
                         </td>
-                    </tr>
+                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                     </tbody>
                 </table>
-                <div id="pageNav"></div>
+
+                <div id="pageNavs" name="page">
+                    <div>  <span class="current">1</span><a class="num" href="/Admin.php?m=Admin&c=Article&a=Index&p=2">2</a><a class="num" href="/Admin.php?m=Admin&c=Article&a=Index&p=3">3</a><a class="num" href="/Admin.php?m=Admin&c=Article&a=Index&p=4">4</a><a class="num" href="/Admin.php?m=Admin&c=Article&a=Index&p=5">5</a> <a class="next" href="/Admin.php?m=Admin&c=Article&a=Index&p=2">>></a> </div>
+                </div>
             </div>
         </div>
     </fieldset>
@@ -160,6 +163,7 @@
     layui.config({
         base: '/Public/js/Admin/'
     }).use(['datalist','Article']);
+
 </script>
 </body>
 </html>

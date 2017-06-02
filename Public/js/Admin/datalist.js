@@ -19,13 +19,24 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
     //pageSize：页容量（每页显示的条数）
     function initilData(currentIndex, pageSize) {
         var index = layer.load(1);
-        //模拟数据
-        var data = new Array();
-        for (var i = 0; i < 30; i++) {
-            data.push({ id: i + 1, time: '2017-3-26 15:56', title: '不落阁后台模板源码分享', author: 'Absolutely', category: 'Web前端' });
-        }
+        //数据
+        var data=null;
+        var pageData =JSON.stringify({
+            pageIndex:currentIndex,
+            pageSize:pageSize
+        });
+        $.post('Admin.php?c=Article&a=playArticle',pageData,function(result){
+            console.log(result);
+            data = result;
+        },"JSON");
+
+
+        // for (var i = 0; i < 30; i++) {
+        //     data.push({ id: i + 1, time: '2017-3-26 15:56', title: '不落阁后台模板源码分享', author: 'Absolutely', category: 'Web前端' });
+        // }
         //模拟数据加载
         setTimeout(function () {
+            debugger;
             layer.close(index);
             //计算总页数（一般由后台返回）
             pages = Math.ceil(data.length / pageSize);
@@ -42,10 +53,10 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             for (var i = 0; i < data.length; i++) {
                 var item = data[i];
                 html += "<tr>";
-                html += "<td>" + item.time + "</td>";
+                html += "<td>" + item.create_time + "</td>";
                 html += "<td>" + item.title + '[' + item.id + ']' + "</td>";
                 html += "<td>" + item.author + "</td>";
-                html += "<td>" + item.category + "</td>";
+                html += "<td>" + item.type_name + "</td>";
                 html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="置顶" value="' + item.id + '" lay-filter="top" checked /></div></form></td>';
                 html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="推荐" value="' + item.id + '" lay-filter="recommend" checked /></div></form></td>';
                 html += '<td><button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData(\'' + item.id + '\')"><i class="layui-icon">&#xe642;</i></button></td>';

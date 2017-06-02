@@ -11,25 +11,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">文章名称</label>
             <div class="layui-input-block">
-                <input type="text" name="TITLE" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">文章类型</label>
             <div class="layui-input-block">
-                <input type="text" name="TYPE_NAME" lay-verify="type_name" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="text" name="type_name" lay-verify="type_name" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">文章地址</label>
             <div class="layui-input-block">
-                <input type="text" name="ARTICLE_URL" lay-verify="article_url" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">文章发布人</label>
-            <div class="layui-input-block">
-                <input type="text" name="AUTHOR" lay-verify="author" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="text" name="article_url" lay-verify="article_url" autocomplete="off" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
         <label class="layui-form-label">文章内容</label>
@@ -44,9 +38,10 @@
         </div>
     </form>
 </div>
+    <script src="/Public/js/jquery.min.js"></script>
     <!-- layui.js -->
     <script src="/Public/plugin/layui/layui.js"></script>
-    <script src="/Public/js/jquery.min.js"></script>
+    <script src="/Public/js/dialog.js"></script>
     <script>
         layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form()
@@ -83,8 +78,10 @@
 //                title: '最终的提交信息'
 //            })
             var index = layer.load(1);
+            debugger;
             var url = "Admin.php?c=Article&a=InsertArticle";
             var data =$("#addArticleForm").serializeArray();
+            debugger;
             var postData ={};
             $(data).each(function(){
                 postData[this.name] = this.value;
@@ -92,10 +89,10 @@
             $.post(url,postData,function(result){
                 layer.close(index);
                 if(result.status == 1){
-                    alert(result.message);
+                    dialog.confirmToAdd(result.message,'Admin.php?c=Article');
                 }
                 if(result.status == 0){
-                    alert(result.message);
+                    dialog.error(result.message);
                 }
             },"JSON");
             return false;
