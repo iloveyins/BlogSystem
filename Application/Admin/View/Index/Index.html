@@ -113,7 +113,7 @@
 
             <script type="text/javascript" src="/Public/plugin/layui/layui.js"></script>
             <script type="text/javascript" src="/Public/datas/nav.js"></script>
-            <script src="/Public/js/Admin/Index.js"></script>
+            <script src="/Public/js/Admin/index.js"></script>
             <script>
                 layui.use('layer', function() {
                     var $ = layui.jquery,

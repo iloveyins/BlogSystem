@@ -27,7 +27,7 @@ class ArticleController extends CommonController
         $page =new Page($count,1);
         $show =$page->show();
         $rets = $art->order('create_Time')
-            ->limit(1,2)
+            ->limit($pageData[pageIndex],$pageData->pageSize)
             ->select();
         return PageContent($rets,$count);
     }
@@ -36,6 +36,7 @@ class ArticleController extends CommonController
     function addArticle(){
         $this->display();
     }
+
     //添加文章
     function InsertArticle(){
         if($_POST) {
