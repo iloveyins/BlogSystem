@@ -6,33 +6,12 @@ var Flash;
         var BlogDetailPage = (function() {
             function BlogDetailPage() {
                 var self = this;
+                self.blogDetailArticleModal = new Flash.Home.BlogDetailArticleModal();
             }
 
             BlogDetailPage.prototype.render = function() {
                 var self = this;
-                self.getBlogDetail();
-            }
-
-            BlogDetailPage.prototype.getBlogDetail = function() {
-                var self = this;
-                var query = {};
-                self._api().getBlogDetail(query).then(function(rawData) {
-
-                });
-            }
-
-            BlogDetailPage.prototype._api = function() {
-                var self = this;
-                return {
-                    /**
-                     * [获取博客列表]
-                     * @param  {Object} query [参数]
-                     * @return {Deferred}       [延迟对象]
-                     */
-                    getBlogDetail: function(query) {
-                        return Flash.get('', query);
-                    }
-                };
+                self.blogDetailArticleModal.render();
             }
 
             return BlogDetailPage;

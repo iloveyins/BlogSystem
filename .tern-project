@@ -6,9 +6,7 @@
     "jquery",
     "underscore"
   ],
-  "loadEagerly": [
-    "Public\\js\\_Shared\\common\\dialog_utils.js"
-  ],
+  "loadEagerly": [],
   "dontLoad": [
     "node_modules/**"
   ],

@@ -6,28 +6,16 @@ var Flash;
         var BlogIndexPage = (function() {
             function BlogIndexPage() {
                 var self = this;
+                self.blogIndexArticleListModal=new Flash.Home.BlogIndexArticleListModal();
+                self.blogIndexRecommArticleModal=new Flash.Home.BlogIndexRecommArticleModal();
+                self.blogIndexTopArticleModal=new Flash.Home.BlogIndexTopArticleModal();
             }
 
             BlogIndexPage.prototype.render = function() {
                 var self = this;
-                self.getBlogList();
-            }
-
-            BlogIndexPage.prototype.getBlogList = function() {
-                var self = this;
-                var query = {};
-                self._api().getBlogList(query).then(function(rawData) {
-
-                });
-            }
-
-            BlogIndexPage.prototype._api = function() {
-                var self = this;
-                return {
-                    getBlogList: function(query) {
-                        return Flash.get('', query);
-                    }
-                };
+                self.blogIndexArticleListModal.render();
+                self.blogIndexRecommArticleModal.render();
+                self.blogIndexTopArticleModal.render();
             }
 
             return BlogIndexPage;
