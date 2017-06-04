@@ -21,7 +21,7 @@ return  array(
     'APP_USE_NAMESPACE'     =>  true,    // 应用类库是否使用命名空间
     'APP_SUB_DOMAIN_DEPLOY' =>  false,   // 是否开启子域名部署
     'APP_SUB_DOMAIN_RULES'  =>  array(), // 子域名部署规则
-    'APP_DOMAIN_SUFFIX'     =>  '', // 域名后缀 如果是com.cn net.cn 之类的后缀必须设置    
+    'APP_DOMAIN_SUFFIX'     =>  '', // 域名后缀 如果是com.cn net.cn 之类的后缀必须设置
     'ACTION_SUFFIX'         =>  '', // 操作方法后缀
     'MULTI_MODULE'          =>  true, // 是否允许多模块 如果为false 则必须设置 DEFAULT_MODULE
     'MODULE_DENY_LIST'      =>  array('Common','Runtime'),
@@ -42,12 +42,12 @@ return  array(
     'DEFAULT_C_LAYER'       =>  'Controller', // 默认的控制器层名称
     'DEFAULT_V_LAYER'       =>  'View', // 默认的视图层名称
     'DEFAULT_LANG'          =>  'zh-cn', // 默认语言
-    'DEFAULT_THEME'         =>  '',	// 默认模板主题名称
+    'DEFAULT_THEME'         =>  '',    // 默认模板主题名称
     'DEFAULT_MODULE'        =>  'Home',  // 默认模块
     'DEFAULT_CONTROLLER'    =>  'Index', // 默认控制器名称
     'DEFAULT_ACTION'        =>  'index', // 默认操作名称
     'DEFAULT_CHARSET'       =>  'utf-8', // 默认输出编码
-    'DEFAULT_TIMEZONE'      =>  'PRC',	// 默认时区
+    'DEFAULT_TIMEZONE'      =>  'PRC',    // 默认时区
     'DEFAULT_AJAX_RETURN'   =>  'JSON',  // 默认AJAX 数据返回格式,可选JSON XML ...
     'DEFAULT_JSONP_HANDLER' =>  'jsonpReturn', // 默认JSONP格式返回的处理方法
     'DEFAULT_FILTER'        =>  'htmlspecialchars', // 默认参数过滤方法 用于I函数...
@@ -60,8 +60,8 @@ return  array(
     'DB_PWD'                =>  '',          // 密码
     'DB_PORT'               =>  '',        // 端口
     'DB_PREFIX'             =>  '',    // 数据库表前缀
-    'DB_PARAMS'          	=>  array(), // 数据库连接参数    
-    'DB_DEBUG'  			=>  TRUE, // 数据库调试模式 开启后可以记录SQL日志
+    'DB_PARAMS'             =>  array(), // 数据库连接参数
+    'DB_DEBUG'              =>  true, // 数据库调试模式 开启后可以记录SQL日志
     'DB_FIELDS_CACHE'       =>  true,        // 启用字段缓存
     'DB_CHARSET'            =>  'utf8',      // 数据库编码默认采用utf8
     'DB_DEPLOY_TYPE'        =>  0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
@@ -76,13 +76,13 @@ return  array(
     'DATA_CACHE_PREFIX'     =>  '',     // 缓存前缀
     'DATA_CACHE_TYPE'       =>  'File',  // 数据缓存类型,支持:File|Db|Apc|Memcache|Shmop|Sqlite|Xcache|Apachenote|Eaccelerator
     'DATA_CACHE_PATH'       =>  TEMP_PATH,// 缓存路径设置 (仅对File方式缓存有效)
-    'DATA_CACHE_KEY'        =>  '',	// 缓存文件KEY (仅对File方式缓存有效)    
+    'DATA_CACHE_KEY'        =>  '',    // 缓存文件KEY (仅对File方式缓存有效)
     'DATA_CACHE_SUBDIR'     =>  false,    // 使用子目录缓存 (自动根据缓存标识的哈希创建子目录)
     'DATA_PATH_LEVEL'       =>  1,        // 子目录缓存级别
 
     /* 错误设置 */
     'ERROR_MESSAGE'         =>  '页面错误！请稍后再试～',//错误显示信息,非调试模式有效
-    'ERROR_PAGE'            =>  '',	// 错误定向页面
+    'ERROR_PAGE'            =>  '',    // 错误定向页面
     'SHOW_ERROR_MSG'        =>  false,    // 显示错误信息
     'TRACE_MAX_RECORD'      =>  100,    // 每个级别的错误信息 最大记录数
 
@@ -90,7 +90,7 @@ return  array(
     'LOG_RECORD'            =>  false,   // 默认不记录日志
     'LOG_TYPE'              =>  'File', // 日志记录类型 默认为文件方式
     'LOG_LEVEL'             =>  'EMERG,ALERT,CRIT,ERR',// 允许记录的日志级别
-    'LOG_FILE_SIZE'         =>  2097152,	// 日志文件大小限制
+    'LOG_FILE_SIZE'         =>  2097152,    // 日志文件大小限制
     'LOG_EXCEPTION_RECORD'  =>  false,    // 是否记录异常信息日志
 
     /* SESSION设置 */
@@ -129,13 +129,13 @@ return  array(
     'TAGLIB_END'            =>  '>',  // 标签库标签结束标记
     'TAGLIB_LOAD'           =>  true, // 是否使用内置标签库之外的其它标签库，默认自动检测
     'TAGLIB_BUILD_IN'       =>  'cx', // 内置标签库名称(标签使用不必指定标签库名称),以逗号分隔 注意解析顺序
-    'TAGLIB_PRE_LOAD'       =>  '',   // 需要额外加载的标签库(须指定标签库名称)，多个以逗号分隔 
-    
+    'TAGLIB_PRE_LOAD'       =>  '',   // 需要额外加载的标签库(须指定标签库名称)，多个以逗号分隔
+
     /* URL设置 */
     'URL_CASE_INSENSITIVE'  =>  true,   // 默认false 表示URL区分大小写 true则表示不区分大小写
     'URL_MODEL'             =>  1,       // URL访问模式,可选参数0、1、2、3,代表以下四种模式：
     // 0 (普通模式); 1 (PATHINFO 模式); 2 (REWRITE  模式); 3 (兼容模式)  默认为PATHINFO 模式
-    'URL_PATHINFO_DEPR'     =>  '/',	// PATHINFO模式下，各参数之间的分割符号
+    'URL_PATHINFO_DEPR'     =>  '/',    // PATHINFO模式下，各参数之间的分割符号
     'URL_PATHINFO_FETCH'    =>  'ORIG_PATH_INFO,REDIRECT_PATH_INFO,REDIRECT_URL', // 用于兼容判断PATH_INFO 参数的SERVER替代变量列表
     'URL_REQUEST_URI'       =>  'REQUEST_URI', // 获取当前页面地址的系统变量 默认为REQUEST_URI
     'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
@@ -157,7 +157,7 @@ return  array(
     'VAR_JSONP_HANDLER'     =>  'callback',
     'VAR_PATHINFO'          =>  's',    // 兼容模式PATHINFO获取变量例如 ?s=/module/action/id/1 后面的参数取决于URL_PATHINFO_DEPR
     'VAR_TEMPLATE'          =>  't',    // 默认模板切换变量
-    'VAR_AUTO_STRING'		=>	false,	// 输入变量是否自动强制转换为字符串 如果开启则数组变量需要手动传入变量修饰符获取变量
+    'VAR_AUTO_STRING'       =>    false,    // 输入变量是否自动强制转换为字符串 如果开启则数组变量需要手动传入变量修饰符获取变量
 
     'HTTP_CACHE_CONTROL'    =>  'private',  // 网页缓存控制
     'CHECK_APP_DIR'         =>  true,       // 是否检查应用目录是否创建
