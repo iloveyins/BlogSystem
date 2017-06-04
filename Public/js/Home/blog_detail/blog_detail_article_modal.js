@@ -9,14 +9,21 @@ var Flash;
 
             BlogDetailArticleModal.prototype.render=function () {
                 var self=this;
-                self.getArticle();
+                self._getArticle();
             }
 
-            BlogDetailArticleModal.prototype.getArticle=function () {
+            BlogDetailArticleModal.prototype._getArticle=function () {
                 var self=this;
                 self._api().getArticle().then(function (rawData) {
 
                 });
+                self._initHeighLight();
+            }
+
+            BlogDetailArticleModal.prototype._initHeighLight=function () {
+                var self = this;
+                hljs.initHighlightingOnLoad();
+                hljs.initLineNumbersOnLoad();
             }
 
             BlogDetailArticleModal.prototype._api=function () {
