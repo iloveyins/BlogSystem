@@ -3,7 +3,7 @@
  * @Author: YangYu
  * @Date:   2017-04-20 21:49:32
  * @Last Modified by:   anchen
- * @Last Modified time: 2017-04-22 10:56:58
+ * @Last Modified time: 2017-05-15 11:45:08
  */
 
 /**
@@ -15,10 +15,13 @@ use  Think\Controller;
 class LoginController extends Controller
 {
     function Index(){
-         if(session('adminUser')){
-             $this->redirect('/Admin.php?Index&a=Index');
+         if(session('blogadminUser')){
+            //$this->redirect('Admin.php?c=Index');
+             echo "<script> parent.location.href='Admin.php?c=Index'</script>";
+         }else
+         {
+             $this->display();
          }
-        $this->display();
     }
 
     //登录按钮
@@ -35,16 +38,16 @@ class LoginController extends Controller
             return show(0,'用户名不存在');
         }
 
-        if($ret['pwd'] != getMd5Password($pwd)){
+        if($ret['password'] != getMd5Password($pwd)){
             return show(0,'密码错误');
         }
 
-        session('adminUser',$ret);
+        session('blogadminUser',$ret);
         return show(1,"登录成功");
     }
 
     function outLogin(){
-        session('adminUser',null);
+        session('blogadminUser',null);
         echo "<script> parent.location.href='Admin.php'</script>";
     }
 }

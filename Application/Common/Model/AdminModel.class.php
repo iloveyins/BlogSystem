@@ -13,11 +13,10 @@ class AdminModel extends Model
     private $_db = '';
     public function __construct()
     {
-        $this->_db = M('user');
+        $this->_db = M('admin');
     }
-
     public function getAdminByUserName($userName){
-        $ret = $this->_db->where('userName="'.$userName.'"')->find();
+        $ret = $this->_db->where('USER_NAME="'.$userName.'"')->find();
         return $ret;
     }
 }

@@ -2,8 +2,46 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/Public/plugin/layui/css/layui.css">
     </head>
     <body>
-    asdfds
+    <div class="" style="padding: 20px;">
+        <form class="layui-form" id="addArticleForm" style="margin-top: 20px;" >
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章类型</label>
+                <div class="layui-input-block">
+                    <input type="text" name="type" lay-verify="type" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章地址</label>
+                <div class="layui-input-block">
+                    <input type="text" name="url" lay-verify="surl" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章发布人</label>
+                <div class="layui-input-block">
+                    <input type="text" name="person" lay-verify="person" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                </div>
+            </div>
+            <label class="layui-form-label">编辑器</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="addArticle">确认添加</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" id="addreset">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
     </body>
 </html>

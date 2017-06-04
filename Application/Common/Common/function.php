@@ -6,6 +6,7 @@
  * @Last Modified time: 2017-04-20 22:40:45
  */
 
+//返回提示信息
 function show($status,$message,$data=array()){
     $return = array(
         'status' =>$status,
@@ -18,3 +19,11 @@ function show($status,$message,$data=array()){
 function getMd5Password($pwd){
     return md5($pwd);
 };
+//返回分页信息
+function PageContent($rows,$count){
+    $arr =  array(
+        'rows'=>$rows,
+        'count'=>$count,
+    );
+    return exit(json_encode($arr));
+}

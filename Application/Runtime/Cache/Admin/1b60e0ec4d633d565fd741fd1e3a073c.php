@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -118,12 +118,11 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <volist name="list" id="vo">
-                    <tr>
-                        <td>{$vo.create_Time}</td>
-                        <td>{$vo.title}</td>
-                        <td>{$vo.author}</td>
-                        <td>{$vo.type_name}</td>
+                    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                        <td><?php echo ($vo["create_Time"]); ?></td>
+                        <td><?php echo ($vo["title"]); ?></td>
+                        <td><?php echo ($vo["author"]); ?></td>
+                        <td><?php echo ($vo["type_name"]); ?></td>
                         <td>
                             <form class="layui-form" action="">
                                 <div class="layui-form-item" style="margin:0;">
@@ -144,8 +143,7 @@
                         <td>
                             <button class="layui-btn layui-btn-small layui-btn-danger"><i class="layui-icon">&#xe640;</i></button>
                         </td>
-                    </tr>
-                    </volist>
+                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
                     </tbody>
                 </table>
 
