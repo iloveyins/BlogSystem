@@ -1,4 +1,4 @@
-# Windows image file caches
+﻿# Windows image file caches
 Thumbs.db
 ehthumbs.db
 
@@ -43,4 +43,4 @@ Temporary Items
 .apdisk
 
 # 忽略自定义文件夹以及子文件
-RunTime/
+Runtime/
