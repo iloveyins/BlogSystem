@@ -12,9 +12,23 @@
             </div>
         </div>
         <div class="mod_top_body">
-<pre class="hljs javascript"><code class="javascript">function() {
-    console.log('Hello World!');
-}</code></pre>
+<pre class="hljs javascript"><code class="javascript">function sort() {
+    var arr = [1, 6, 4, 5, 10, 2, 0];
+    for(var i = 0; i < arr.length; i++) {
+        for(var j = i + 1; j < arr.length; j++) {
+            if(arr[i] < arr[j]) {
+                var a = arr[i];
+                arr[i] = arr[j];
+                arr[j] = a;
+            }
+        }
+    }
+
+    for(var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+}
+sort();</code></pre>
         </div>
         <div class="mod"></div>
         <script src="/Public/js/Home/blog_detail/blog_detail_article_modal.js" charset="utf-8"></script>

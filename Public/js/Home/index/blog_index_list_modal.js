@@ -9,8 +9,9 @@ var Flash;
 
             BlogIndexArticleListModal.prototype.render=function () {
                 var self=this;
+
                 $('#Detail').on('click', function(event) {
-                    Flash.openPage('');
+                    Flash.openPage('/home/BlogDetail/blogDetail',true);
                 });
                 self.getBlogList();
             }

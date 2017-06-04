@@ -14,12 +14,17 @@ var Flash;
      * @param  {boolean} isOpenNewTab [是否新开一个tab]
      */
     function openPage(url,isOpenNewTab) {
-        var baseUrl = "https://";
         if (isOpenNewTab) {
-            window.open(`${baseUrl}${url}`);
-        }else {
-            window.location.href=`${baseUrl}${url}`;
+            window.open(url);
+        } else {
+            window.location.href=url;
         }
+        // var baseUrl = "https://";
+        // if (isOpenNewTab) {
+        //     window.open(`${baseUrl}${url}`);
+        // }else {
+        //     window.location.href=`${baseUrl}${url}`;
+        // }
     }
     Flash.openPage=openPage;
 }(Flash||(Flash={})))
