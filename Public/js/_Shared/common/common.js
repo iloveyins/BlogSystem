@@ -1,40 +1,30 @@
 var Flash;
-(function(Flash) {
-    function get(url, query) {
-        return $.ajax({
-                url: url,
-                type: 'GET',
-                dataType: 'json',
-                data: query
-            })
-            .done(function() {
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
+(function (Flash) {
+    /**
+     * [reloadPage 重新加载当前页面]
+     */
+    function reloadPage() {
+        window.location.reload();
     }
-    Flash.get = get;
+    Flash.reloadPage=reloadPage;
 
-    function post(url, params) {
-        return $.ajax({
-                url: url,
-                type: 'POST',
-                dataType: 'json',
-                data: params
-            })
-            .done(function() {
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });
+    /**
+     * [openNewTab 打开新的页面]
+     * @param  {string} url [新页面链接]
+     * @param  {boolean} isOpenNewTab [是否新开一个tab]
+     */
+    function openPage(url,isOpenNewTab) {
+        if (isOpenNewTab) {
+            window.open(url);
+        } else {
+            window.location.href=url;
+        }
+        // var baseUrl = "https://";
+        // if (isOpenNewTab) {
+        //     window.open(`${baseUrl}${url}`);
+        // }else {
+        //     window.location.href=`${baseUrl}${url}`;
+        // }
     }
-    Flash.post = post;
-}(Flash || Flash = {}));
+    Flash.openPage=openPage;
+}(Flash||(Flash={})))
