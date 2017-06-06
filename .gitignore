@@ -44,3 +44,4 @@ Temporary Items
 
 # 忽略自定义文件夹以及子文件
 Runtime/
+.idea/
