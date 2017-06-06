@@ -27,7 +27,7 @@ class ArticleController extends CommonController
         $page =new Page($count,1);
         $show =$page->show();
         $rets = $art->order('create_Time')
-            ->limit($pageData[pageIndex],$pageData->pageSize)
+            ->limit(($pageData[pageIndex]-1) * $pageData[pageSize],$pageData[pageSize])
             ->select();
         return PageContent($rets,$count);
     }
@@ -65,6 +65,16 @@ class ArticleController extends CommonController
             }
         }else{
             return show(0,"参数错误");
+        }
+    }
+
+    //删除文章
+    function DelArticle(){
+        $ret = D("Article")->deleteArticle($_GET[id]);
+        if($ret>=1){
+            return show(1,"删除成功");
+        }else{
+            return show(0,"删除失败");
         }
     }
 }

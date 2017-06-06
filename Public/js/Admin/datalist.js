@@ -21,18 +21,17 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
         var index = layer.load(1);
         //数据
         var data=null;
-        var pageData =JSON.stringify({
+        var pageData ={
             pageIndex:currentIndex,
             pageSize:pageSize
-        });
+        };
         var pages=null;
         $.post('Admin.php?c=Article&a=playArticle',pageData,function(result){
             debugger;
-            pages = result.count;
+            pages = Math.ceil(result.count / pageData.pageSize);
             data = result;
             //模拟数据加载
             setTimeout(function () {
-                debugger;
                 layer.close(index);
                 //计算总页数（一般由后台返回）
                 var html = '';  //由于静态页面，所以只能作字符串拼接，实际使用一般是ajax请求服务器数据
@@ -43,6 +42,7 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                 //遍历文章集合
                 for (var i = 0; i < data.rows.length; i++) {
                     var item = data.rows[i];
+                    debugger;
                     html += "<tr>";
                     html += "<td>" + item.create_time + "</td>";
                     html += "<td>" + item.title + '[' + item.id + ']' + "</td>";
@@ -119,7 +119,10 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             layer.confirm('确定删除？', {
                 btn: ['确定', '取消'] //按钮
             }, function () {
-                layer.msg('删除Id为【' + id + '】的数据');
+                $.get('Admin.php?c=Article&a=DelArticle',{id:id},function (result) {
+                    debugger;
+                    layer.msg(result.message);
+                });
             }, function () {
 
             });

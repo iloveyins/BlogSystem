@@ -10,3 +10,9 @@ INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000076s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000934s ]
 ERR: 无法加载模块:Resource
 
+[ 2017-06-04T21:58:31+08:00 ] 127.0.0.1 /Html/about.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000498s ]
+ERR: 无法加载模块:Html
+
