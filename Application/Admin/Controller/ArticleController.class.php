@@ -19,14 +19,11 @@ class ArticleController extends CommonController
         $this->display();
     }
 
-    function playArticle(){
+    function SearchArticle(){
         $pageData = $_POST;
         $art = M('article');
-        import('ORG.Util.Page');
         $count =$art->count();
-        $page =new Page($count,1);
-        $show =$page->show();
-        $rets = $art->order('create_Time')
+        $rets = $art->order('id')
             ->limit(($pageData[pageIndex]-1) * $pageData[pageSize],$pageData[pageSize])
             ->select();
         return PageContent($rets,$count);

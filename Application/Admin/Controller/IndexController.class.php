@@ -24,8 +24,5 @@ class IndexController extends CommonController
     function  Article(){
         $this->display();
     }
-    //文章管理ss
-    function  Articless(){
-        $this->display();
-    }
+
 }

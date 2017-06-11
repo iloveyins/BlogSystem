@@ -25,5 +25,5 @@ function PageContent($rows,$count){
         'rows'=>$rows,
         'count'=>$count,
     );
-    return exit(json_encode($arr));
+    exit(json_encode($arr));
 }

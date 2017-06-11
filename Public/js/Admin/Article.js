@@ -9,7 +9,6 @@ layui.define(['element', 'layer', 'form'], function (exports) {
     var form = layui.form();
     var $ = layui.jquery;
     //添加数据
-    //添加数据
     $('#addArticle').click(function () {
         var index = layer.load(1);
         setTimeout(function () {

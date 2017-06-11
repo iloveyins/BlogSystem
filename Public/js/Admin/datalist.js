@@ -25,14 +25,15 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             pageIndex:currentIndex,
             pageSize:pageSize
         };
+        debugger;
         var pages=null;
-        $.post('Admin.php?c=Article&a=playArticle',pageData,function(result){
-            debugger;
+        $.post('Admin.php?c=Article&a=SearchArticle',pageData,function(result){
             pages = Math.ceil(result.count / pageData.pageSize);
             data = result;
             //模拟数据加载
             setTimeout(function () {
                 layer.close(index);
+                debugger;
                 //计算总页数（一般由后台返回）
                 var html = '';  //由于静态页面，所以只能作字符串拼接，实际使用一般是ajax请求服务器数据
                 html += '<table style="" class="layui-table" lay-even>';
@@ -42,7 +43,6 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                 //遍历文章集合
                 for (var i = 0; i < data.rows.length; i++) {
                     var item = data.rows[i];
-                    debugger;
                     html += "<tr>";
                     html += "<td>" + item.create_time + "</td>";
                     html += "<td>" + item.title + '[' + item.id + ']' + "</td>";
@@ -57,7 +57,6 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                 html += '</tbody>';
                 html += '</table>';
                 html += '<div id="' + laypageId + '"></div>';
-
                 $('#dataContent').html(html);
 
                 form.render('checkbox');  //重新渲染CheckBox，编辑和添加的时候
@@ -72,7 +71,6 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                     jump: function (obj, first) {
                         var currentIndex = obj.curr;
                         if (!first) {
-                            debugger;
                             initilData(currentIndex, pageSize);
                         }
                     }

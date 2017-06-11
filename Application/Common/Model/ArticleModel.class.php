@@ -27,7 +27,7 @@ class ArticleModel extends Model{
         }
         $users = session("blogadminUser");
         $data['author']=$users['user_name'];
-        $data['create_time']=new \DataTime;
+        $data['create_time']= date('Y-m-d H:i:s',time());
         $data['acc_num']=0;
         $data['auth']="";
         $data['browse_num']=0;
@@ -41,6 +41,5 @@ class ArticleModel extends Model{
     //删除文章信息
     public function deleteArticle($Id){
         return $this->_db->where('id='.$Id)->delete();
-
     }
 }
