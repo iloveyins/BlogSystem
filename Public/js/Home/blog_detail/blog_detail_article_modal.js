@@ -1,46 +1,53 @@
 var Flash;
-(function (Flash) {
+(function(Flash) {
     var Home;
-    (function (Home) {
-        var BlogDetailArticleModal=(function () {
+    (function(Home) {
+        var BlogDetailArticleModal = (function() {
             function BlogDetailArticleModal() {
-                var self=this;
+                var self = this;
             }
 
-            BlogDetailArticleModal.prototype.render=function () {
-                var self=this;
+            BlogDetailArticleModal.prototype.render = function() {
+                var self = this;
                 self._getArticle();
+                //self._initHeighLight();
             }
 
-            BlogDetailArticleModal.prototype._getArticle=function () {
-                var self=this;
-                self._api().getArticle().then(function (rawData) {
+            BlogDetailArticleModal.prototype._getArticle = function() {
+                var self = this;
+                self._api().getArticleById({
+                    id: 7
+                }).then(function(rawData) {
+                    if (rawData) {
+                        var content = rawData.content;
+                        $('#blog_body').html(content);
+                        self._initHeighLight();
+                    }
 
                 });
-                self._initHeighLight();
             }
 
-            BlogDetailArticleModal.prototype._initHeighLight=function () {
+            BlogDetailArticleModal.prototype._initHeighLight = function() {
                 var self = this;
-                hljs.initHighlightingOnLoad();
+                hljs.initHighlighting();
                 hljs.initLineNumbersOnLoad();
             }
 
-            BlogDetailArticleModal.prototype._api=function () {
-                var self=this;
-                return{
+            BlogDetailArticleModal.prototype._api = function() {
+                var self = this;
+                return {
                     /**
                      * [获取文章详情]
-                     * @param  {Object} query []
+                     * @param  {Object} query [{id:string}]
                      * @return {Deferred}       [description]
                      */
-                    getArticle:function (query) {
-                        return Flash.get('',query);
+                    getArticleById: function(query) {
+                        return Flash.get('/Home/BlogEdit/getArticleById', query);
                     }
                 };
             }
             return BlogDetailArticleModal;
         }());
-        Home.BlogDetailArticleModal=BlogDetailArticleModal;
-    }(Home=Flash.Home||(Flash.Home={})));
-}(Flash||(Flash={})));
+        Home.BlogDetailArticleModal = BlogDetailArticleModal;
+    }(Home = Flash.Home || (Flash.Home = {})));
+}(Flash || (Flash = {})));
