@@ -12,7 +12,6 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
         form = layui.form(),
         laypage = layui.laypage;
     var laypageId = 'pageNav';
-
     initilData(1,10);
     //页数据初始化
     //currentIndex：当前也下标
@@ -25,7 +24,6 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             pageIndex:currentIndex,
             pageSize:pageSize
         };
-        debugger;
         var pages=null;
         $.post('Admin.php?c=Article&a=SearchArticle',pageData,function(result){
             pages = Math.ceil(result.count / pageData.pageSize);
@@ -33,12 +31,11 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
             //模拟数据加载
             setTimeout(function () {
                 layer.close(index);
-                debugger;
                 //计算总页数（一般由后台返回）
                 var html = '';  //由于静态页面，所以只能作字符串拼接，实际使用一般是ajax请求服务器数据
                 html += '<table style="" class="layui-table" lay-even>';
-                html += '<colgroup><col width="180"><col><col width="150"><col width="180"><col width="90"><col width="90"><col width="50"><col width="50"></colgroup>';
-                html += '<thead><tr><th>发表时间</th><th>标题</th><th>作者</th><th>类别</th><th colspan="2">选项</th><th colspan="2">操作</th></tr></thead>';
+                html += '<colgroup><col width="180"><col><col width="80"><col width="180"><col width="180"><col width="190"><col width="190"><col width="50"><col width="50"></colgroup>';
+                html += '<thead><tr><th>发表时间</th><th>标题</th><th>作者</th><th>类别</th><th>插件下载量</th><th>浏览量</th><th>地址</th><th colspan="2">选项</th><th colspan="2">操作</th></tr></thead>';
                 html += '<tbody>';
                 //遍历文章集合
                 for (var i = 0; i < data.rows.length; i++) {
@@ -48,6 +45,9 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                     html += "<td>" + item.title + '[' + item.id + ']' + "</td>";
                     html += "<td>" + item.author + "</td>";
                     html += "<td>" + item.type_name + "</td>";
+                    html += "<td>" + item.accn_num + "</td>";
+                    html += "<td>" + item.browse_num + "</td>";
+                    html += "<td>" + item.article_url + "</td>";
                     html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="置顶" value="' + item.id + '" lay-filter="top" checked /></div></form></td>';
                     html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="推荐" value="' + item.id + '" lay-filter="recommend" checked /></div></form></td>';
                     html += '<td><button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData(\'' + item.id + '\')"><i class="layui-icon">&#xe642;</i></button></td>';
@@ -118,15 +118,24 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                 btn: ['确定', '取消'] //按钮
             }, function () {
                 $.get('Admin.php?c=Article&a=DelArticle',{id:id},function (result) {
-                    debugger;
                     layer.msg(result.message);
-                });
+                    setTimeout(function(){
+                        window.location.href = 'Admin.php?c=Article';
+                    },(300));
+                },"JSON");
             }, function () {
 
             });
         },
         editData: function (id) {
-            layer.msg('编辑Id为【' + id + '】的数据');
+            var data ;
+            layer.open({
+                type:2,
+                title:"修改文章信息",
+                area:['900px','500px'],
+                maxmin:true,
+                content:"Admin.php?c=Article&a=updateArticle&id="+encodeURI(id)
+            });
         }
     };
     exports('datalist', datalist);

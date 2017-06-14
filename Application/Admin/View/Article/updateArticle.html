@@ -2,86 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>添加文章</title>
+    <title>修改文章管理</title>
     <link rel="stylesheet" href="/Public/plugin/layui/css/layui.css">
 </head>
 <body>
 <div class="" style="padding: 20px;">
-    <form class="layui-form" id="addArticleForm" style="margin-top: 20px;" >
+    <form class="layui-form" id="updateArticleForm" style="margin-top: 20px;" >
         <div class="layui-form-item">
             <label class="layui-form-label">文章名称</label>
             <div class="layui-input-block">
-                <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="hidden" name="id" value="{$ret.id}">
+                <input type="text" name="title" lay-verify="title" autocomplete="off" value="{$ret.title}" placeholder="请输入标题" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">文章类型</label>
             <div class="layui-input-block">
-                <input type="text" name="type_name" lay-verify="type_name" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                <input type="text" name="type_name" lay-verify="type_name" autocomplete="off" value="{$ret.type_name}" placeholder="文章类型" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">文章地址</label>
             <div class="layui-input-block">
-                <input type="text" name="article_url" lay-verify="article_url" autocomplete="off" placeholder="请输入标题" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">图片地址</label>
-            <div class="layui-input-block">
-                <input type="text" name="img_url" lay-verify="img_url" autocomplete="off" placeholder="图片地址" class="layui-input">
+                <input type="text" name="article_url" lay-verify="article_url" autocomplete="off" value="{$ret.article_url}" placeholder="文章地址" class="layui-input">
             </div>
         </div>
         <label class="layui-form-label">文章内容</label>
         <div class="layui-input-block">
-            <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="editor_content"></textarea>
+            <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"  placeholder="文章内容">{$ret.content}</textarea>
         </div>
-        <div class="layui-form-item" style="margin-top: 10px">
+        <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="addArticle">确认添加</button>
+                <button class="layui-btn" lay-submit="" lay-filter="updateArticle">确认修改</button>
                 <button type="reset" class="layui-btn layui-btn-primary" id="addreset">重置</button>
             </div>
         </div>
     </form>
 </div>
-    <script src="/Public/js/jquery.min.js"></script>
-    <!-- layui.js -->
-    <script src="/Public/plugin/layui/layui.js"></script>
-    <script src="/Public/js/dialog.js"></script>
-    <script>
-        layui.use(['form', 'layedit', 'laydate'], function(){
+<script src="/Public/js/jquery.min.js"></script>
+<!-- layui.js -->
+<script src="/Public/plugin/layui/layui.js"></script>
+<script src="/Public/js/dialog.js"></script>
+
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function(){
         var form = layui.form()
             ,layer = layui.layer
             ,layedit = layui.layedit
             ,laydate = layui.laydate;
 
-
-        layedit.set({
-            uploadImage: {
-                url: 'Admin.php?' //接口url
-                ,type: '' //默认post
-            }
-        });
         //创建一个编辑器
-        var editIndex = layedit.build('editor_content',{
-            tool: [
-                'strong' //加粗
-                ,'italic' //斜体
-                ,'underline' //下划线
-                ,'del' //删除线
-
-                ,'|' //分割线
-
-                ,'left' //左对齐
-                ,'center' //居中对齐
-                ,'right' //右对齐
-                ,'|' //分割线
-                ,'link' //超链接
-                ,'unlink' //清除链接
-                ,'face' //表情
-                ,'image' //插入图片
-            ]
-        });
+        var editIndex = layedit.build('LAY_demo_editor');
         //自定义验证规则
         form.verify({
             title: function(value){
@@ -95,6 +66,7 @@
             }
         });
 
+
         //监听指定开关
         form.on('switch(switchTest)', function(data){
             layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
@@ -104,10 +76,11 @@
         });
 
         //监听提交
-        form.on('submit(addArticle)', function(data){
+        form.on('submit(updateArticle)', function(data){
+            console.log(data.field);
             var index = layer.load(1);
-            var url = "Admin.php?c=Article&a=InsertArticle";
-            var data =$("#addArticleForm").serializeArray();
+            var url = "Admin.php?c=Article&a=saveArticle";
+            var data =$("#updateArticleForm").serializeArray();
             var postData ={};
             $(data).each(function(){
                 postData[this.name] = this.value;
@@ -115,7 +88,7 @@
             $.post(url,postData,function(result){
                 layer.close(index);
                 if(result.status == 1){
-                    dialog.confirmToAdd(result.message,'Admin.php?c=Article');
+                    dialog.success(result.message,'Admin.php?c=Article');
                 }
                 if(result.status == 0){
                     dialog.error(result.message);
@@ -124,6 +97,6 @@
             return false;
         });
     });
-    </script>
+</script>
 </body>
 </html>

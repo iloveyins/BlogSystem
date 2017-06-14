@@ -19,11 +19,12 @@ class ArticleController extends CommonController
         $this->display();
     }
 
+    //查询文章信息（分页）
     function SearchArticle(){
         $pageData = $_POST;
         $art = M('article');
         $count =$art->count();
-        $rets = $art->order('id')
+        $rets = $art->order('id desc')
             ->limit(($pageData[pageIndex]-1) * $pageData[pageSize],$pageData[pageSize])
             ->select();
         return PageContent($rets,$count);
@@ -52,8 +53,6 @@ class ArticleController extends CommonController
 //            if(!isset($_POST['author']) || !$_POST['author']){
 //                return show(0,"发布人不能为空");
 //            }
-
-
             $ret = D("Article")->insertAricle($_POST);
             if($ret){
                 return show(1,"新增成功",$ret);
@@ -68,10 +67,31 @@ class ArticleController extends CommonController
     //删除文章
     function DelArticle(){
         $ret = D("Article")->deleteArticle($_GET[id]);
-        if($ret>=1){
+        if($ret >= 1){
             return show(1,"删除成功");
         }else{
             return show(0,"删除失败");
         }
+    }
+    //修改文章信息
+    function updateArticle(){
+        $ret =D("Article")->getArticle($_GET[id]);
+        $this->assign('ret',$ret[0]);
+        $this->display();
+    }
+    //修改文章信息
+    function saveArticle(){
+        $ret = D("Article")->updateArticle($_POST);
+        if($ret >= 1){
+            return show(1,"更新成功");
+        }else{
+            return show(0,"更新失败");
+        }
+    }
+
+    //根据ID获取文章信息
+    function  getArticle(){
+        $ret =D("Article")->getArticle($_GET[id]);
+        return exit(json_encode($ret));
     }
 }

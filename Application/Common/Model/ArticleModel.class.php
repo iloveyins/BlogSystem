@@ -20,6 +20,11 @@ class ArticleModel extends Model{
         $ret = $this->_db->select();
         return $ret;
     }
+    //获取文章信息
+    public function getArticle($Id){
+        $ret = $this->_db->where('id='.$Id)->select();
+        return $ret;
+    }
     //添加文章
     public function insertAricle($data=array()){
         if(!$data || !is_array($data)){
@@ -34,11 +39,14 @@ class ArticleModel extends Model{
         $data['acce_id']=0;
         return $this->_db->add($data);
     }
-    //更新文章信息
-    public function updateArticle(){
 
+    //更新文章信息
+    public function updateArticle($data){
+        $users = session("blogadminUser");
+        $id = $data[id];
+        array_shift($data);
+        return $this->_db->where("id=".$id)->setField($data);
     }
-    //删除文章信息
     public function deleteArticle($Id){
         return $this->_db->where('id='.$Id)->delete();
     }

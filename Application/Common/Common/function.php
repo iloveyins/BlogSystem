@@ -13,7 +13,7 @@ function show($status,$message,$data=array()){
         'message' =>$message,
         'data'=>$data,
     );
-    exit(json_encode($return));
+    exit(json_encode($return,JSON_UNESCAPED_UNICODE));
 }
 
 function getMd5Password($pwd){
