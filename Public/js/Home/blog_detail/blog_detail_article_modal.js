@@ -10,20 +10,21 @@ var Flash;
             BlogDetailArticleModal.prototype.render = function() {
                 var self = this;
                 self._getArticle();
-                //self._initHeighLight();
             }
 
             BlogDetailArticleModal.prototype._getArticle = function() {
                 var self = this;
                 self._api().getArticleById({
-                    id: 7
+                    id: 8
                 }).then(function(rawData) {
                     if (rawData) {
                         var content = rawData.content;
-                        $('#blog_body').html(content);
+                        $('.blog_body').html(content);
+                        $('table').addClass('table table-bordered table-striped table-hover');
+                        // var height = $('.mod_top_body').height();
+                        // $('.mod').height(height);
                         self._initHeighLight();
                     }
-
                 });
             }
 

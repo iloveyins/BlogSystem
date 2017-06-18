@@ -4,7 +4,9 @@ var Flash;
     (function(Home) {
         var BlogEditPage = (function() {
             function BlogEditPage() {
-
+                var self = this;
+                self.saveSuccessed = $.Deferred();
+                self.articleId = null;
             }
 
             BlogEditPage.prototype.submit = function() {
@@ -13,29 +15,24 @@ var Flash;
                 let postData = {
                     content: content
                 };
-                self._api().saveArticle(postData).then(function(rawData) {
-
-                });
+                if (self.articleId) {
+                    self._api().updateArticleById(postData).then(function(rawData) {
+                        self.saveSuccessed.notify();
+                    });
+                } else {
+                    self._api().saveArticle(postData).then(function(rawData) {
+                        self.articleId = rawData.articleId;
+                        self.saveSuccessed.notify();
+                    });
+                }
             };
 
             BlogEditPage.prototype.render = function() {
                 var self = this;
-                var options = {
-                    textarea: $('#editor'),
-                    placeholder: '',
-                    defaultImage: '/Public/images/simditor.png',
-                    params: {},
-                    upload: true,
-                    tabIndent: true,
-                    toolbar: true,
-                    toolbarFloat: true,
-                    toolbarFloatOffset: 0,
-                    toolbarHidden: false,
-                    pasteImage: false,
-                    cleanPaste: false,
-                    autosavePath: '/Home/BlogEdit/saveArticle'
-                };
-                var editor = new Simditor(options);
+                self.saveSuccessed.progress(function() {
+
+                });
+                self.editor = Flash.SimditorUtils.setSimditor();
             };
 
             BlogEditPage.prototype._api = function() {
@@ -55,6 +52,14 @@ var Flash;
                      */
                     getArticleById: function(query) {
                         return Flash.get('/Home/BlogEdit/getArticleById', query);
+                    },
+                    /**
+                     * [description]
+                     * @param  {[type]} postData [description]
+                     * @return {[type]}          [description]
+                     */
+                    updateArticleById: function(postData) {
+                        return Flash.post('/Home/BlogEdit/updateArticleById');
                     }
                 }
             };
@@ -63,5 +68,4 @@ var Flash;
         Home.BlogEditPage = BlogEditPage;
     }(Home = Flash.Home || (Flash.Home = {})));
 }(Flash || (Flash = {})));
-var BlogEditPage = new Flash.Home.BlogEditPage();
-BlogEditPage.render();
+(new Flash.Home.BlogEditPage()).render();
