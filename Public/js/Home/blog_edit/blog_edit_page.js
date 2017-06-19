@@ -15,16 +15,28 @@ var Flash;
                 let postData = {
                     content: content
                 };
-                if (self.articleId) {
-                    self._api().updateArticleById(postData).then(function(rawData) {
-                        self.saveSuccessed.notify();
-                    });
-                } else {
-                    self._api().saveArticle(postData).then(function(rawData) {
-                        self.articleId = rawData.articleId;
-                        self.saveSuccessed.notify();
-                    });
+                var options = {
+                    title: "你好",
+                    text: "你吃饭了吗?世界你好",
+                    hrefInfos: [{
+                        href: "http://www.baidu.com",
+                        text: "世界你好"
+                    }, {
+                        href: "http://www.163.com",
+                        text: "你吃饭了吗"
+                    }]
                 }
+                Flash.showSuccesseInfo(options);
+                // if (self.articleId) {
+                //     self._api().updateArticleById(postData).then(function(rawData) {
+                //         self.saveSuccessed.notify();
+                //     });
+                // } else {
+                //     self._api().saveArticle(postData).then(function(rawData) {
+                //         self.articleId = rawData.articleId;
+                //         self.saveSuccessed.notify();
+                //     });
+                // }
             };
 
             BlogEditPage.prototype.render = function() {
@@ -68,4 +80,5 @@ var Flash;
         Home.BlogEditPage = BlogEditPage;
     }(Home = Flash.Home || (Flash.Home = {})));
 }(Flash || (Flash = {})));
-(new Flash.Home.BlogEditPage()).render();
+var BlogEditPage = new Flash.Home.BlogEditPage();
+BlogEditPage.render();
