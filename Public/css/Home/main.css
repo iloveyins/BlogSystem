@@ -1,0 +1,41 @@
+.height-auto {
+    height: auto;
+}
+
+.row-margin-top {
+    margin-top: 20px;
+}
+
+.row-margin-bottom {
+    margin-bottom: 20px;
+}
+
+.row-margin-left {
+    margin-left: 20px;
+}
+
+.row-margin-right {
+    margin-right: 20px;
+}
+
+.min-z-index {
+    z-index: 0;
+}
+
+.max-z-index {
+    z-index: 99999;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.message {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 400px;
+    width: auto;
+    z-index: 999;
+}

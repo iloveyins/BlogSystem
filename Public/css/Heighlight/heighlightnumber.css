@@ -2,6 +2,10 @@
     width: 800px;
 }
 
+pre{
+    padding: 0;
+}
+
 .hljs-line-numbers {
     text-align: right;
     border-right: 1px solid #ccc;

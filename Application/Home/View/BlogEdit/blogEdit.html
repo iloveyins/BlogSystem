@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>编辑博客</title>
+        <link rel="stylesheet" href="/Public/plugin/bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="/Public/plugin/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/Public/css/Simditor-2.3.6/simditor.css">
+        <link rel="stylesheet" href="/Public/css/Home/main.css">
+        <link rel="stylesheet" href="/Public/css/Simditor-2.3.6/simditor-emoji.css">
+        <script src="/Public/js/Lib/jquery/jquery-3.2.1.js" charset="utf-8"></script>
+        <script src="/Public/js/Lib/simditor-2.3.6/module.js" charset="utf-8"></script>
+        <script src="/Public/js/Lib/simditor-2.3.6/hotkeys.js" charset="utf-8"></script>
+        <script src="/Public/js/Lib/simditor-2.3.6/uploader.js" charset="utf-8"></script>
+        <script src="/Public/js/Lib/simditor-2.3.6/simditor.js" charset="utf-8"></script>
+        <script src="/Public/js/Lib/simditor-2.3.6/simditor-emoji.js" charset="utf-8"></script>
+        <script src="/Public/js/Lib/simditor-2.3.6/simditor-autosave.js" charset="utf-8"></script>
+        <script src="/Public/js/_Shared/common/ajax_utils.js" charset="utf-8"></script>
+        <script src="/Public/js/_Shared/common/common.js" charset="utf-8"></script>
+        <script src="/Public/plugin/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+
+            <div class="row row-margin-top">
+                <div class="col-md-12">
+                    <textarea id="editor" placeholder="从前有座山,山里有座庙,庙有个老和尚跟一个小和尚讲故事......" autofocus></textarea>
+                </div>
+            </div>
+            <div class="row row-margin-top">
+                <div class="col-md-11"></div>
+                <div class="col-md-1 text-center">
+                    <button type="button" name="button" class="btn btn-primary" onclick="BlogEditPage.submit()">保存文章</button>
+                    <button type="button" name="button" class="btn btn-primary" onclick="BlogEditPage.submit()">文章保存中...</button>
+                </div>
+            </div>
+        </div>
+        <script src="/Public/js/_Shared/common/simditor_utils.js" charset="utf-8"></script>
+        <script src="/Public/js/Home/blog_edit/blog_edit_page.js" charset="utf-8"></script>
+    </body>
+</html>
