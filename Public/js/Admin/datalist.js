@@ -43,11 +43,11 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
                     html += "<tr>";
                     html += "<td>" + item.create_time + "</td>";
                     html += "<td>" + item.title + '[' + item.id + ']' + "</td>";
-                    html += "<td>" + item.author + "</td>";
+                    html += "<td class='layui-elip'>" + item.author + "</td>";
                     html += "<td>" + item.type_name + "</td>";
-                    html += "<td>" + item.accn_num + "</td>";
+                    html += "<td class='layui-elip'>" + item.accn_num + "</td>";
                     html += "<td>" + item.browse_num + "</td>";
-                    html += "<td>" + item.article_url + "</td>";
+                    html += "<td class='layui-elip'>" + item.article_url + "</td>";
                     html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="置顶" value="' + item.id + '" lay-filter="top" checked /></div></form></td>';
                     html += '<td><form class="layui-form" action=""><div class="layui-form-item" style="margin:0;"><input type="checkbox" name="top" title="推荐" value="' + item.id + '" lay-filter="recommend" checked /></div></form></td>';
                     html += '<td><button class="layui-btn layui-btn-small layui-btn-normal" onclick="layui.datalist.editData(\'' + item.id + '\')"><i class="layui-icon">&#xe642;</i></button></td>';
@@ -113,30 +113,7 @@ layui.define(['laypage', 'layer', 'form', 'pagesize'], function (exports) {
     });
     //输出接口，主要是两个函数，一个删除一个编辑
     var datalist = {
-        deleteData: function (id) {
-            layer.confirm('确定删除？', {
-                btn: ['确定', '取消'] //按钮
-            }, function () {
-                $.get('Admin.php?c=Article&a=DelArticle',{id:id},function (result) {
-                    layer.msg(result.message);
-                    setTimeout(function(){
-                        window.location.href = 'Admin.php?c=Article';
-                    },(300));
-                },"JSON");
-            }, function () {
 
-            });
-        },
-        editData: function (id) {
-            var data ;
-            layer.open({
-                type:2,
-                title:"修改文章信息",
-                area:['900px','500px'],
-                maxmin:true,
-                content:"Admin.php?c=Article&a=updateArticle&id="+encodeURI(id)
-            });
-        }
     };
     exports('datalist', datalist);
 });

@@ -16,6 +16,12 @@ class IndexController extends Controller
      */
     public function getBlogList()
     {
-
+        $pageData = $_POST;
+        $art = M('article');
+        $count =$art->count();
+        $rets = $art->order('create_time desc')
+            ->limit(($pageData[pageIndex]-1) * $pageData[pageSize],$pageData[pageSize])
+            ->select();
+        return PageContent($rets,$count);
     }
 }

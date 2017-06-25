@@ -2,7 +2,53 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .top{
+                border:1px solid #000;
+                width:500px;
+                height:60px;
+            }
+            .left{
+                border:1px solid red;
+                width:500px;
+                height:60px;
+            }
+            .rightTop{
+                border:1px solid green;
+                width:500px;
+                height:60px;
+            }
+            .rightDowm{
+                border:1px solid blue;
+                width:500px;
+                height:60px;
+            }
+
+            #top{
+                float:left;
+            }
+            #bot{
+                float:left;
+            }
+
+
+
+            #left{
+                margin-top:15px;
+            }
+        </style>
     </head>
     <body>
+    <div id="top">
+        <div class="top">1</div>
+        <br>
+        <div class="left">2</div>
+    </div>
+
+    <div id="bot">
+        <div class="rightTop">3</div>
+        <br>
+        <div class="rightDowm">4</div>
+    </div>
     </body>
 </html>

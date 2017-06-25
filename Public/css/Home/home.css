@@ -19,6 +19,9 @@
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #34495e;
 }
+.blog-background{
+   background-image: url("../../images/concrete-texture.png");
+}
 .mod_top {
   width: 100%;
   height: 283px;
@@ -48,7 +51,7 @@
   top: 70px;
   width: 100%;
   height: 2200px;
-  background-color: #34495e;
+  //background-color: #34495e;
 }
 .mod_bottom {
   width: 100%;
@@ -59,7 +62,6 @@
 .mod_top_body {
   position: absolute;
   width: 1000px;
-  height: 2200px;
   left: 50%;
   right: 50%;
   margin-left: -500px;

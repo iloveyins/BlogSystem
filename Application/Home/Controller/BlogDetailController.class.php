@@ -13,4 +13,5 @@ class BlogDetailController extends Controller
     {
         $this->display();
     }
+    
 }

@@ -8,7 +8,6 @@
         .layui-btn-small   {
             padding: 0 15px;
         }
-
         .layui-form-checkbox {
             margin: 0;
         }
@@ -66,10 +65,8 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">分类</label>
                             <div class="layui-input-inline" id="typeArtict">
-                                <select id="atricleType" lay-filter="">
-                                    <option value="0">1</option>
-                                    <option value="0">3</option>
-                                    <option value="0">4</option>
+                                <select id="atricleType" lay-filter="atricleType">
+                                    <option value="">请选择</option>
                                 </select>
                             </div>
                             <label class="layui-form-label">关键词</label>
@@ -82,7 +79,7 @@
                         </div>
                         <div class="layui-inline">
                             <div class="layui-input-inline" style="width:auto">
-                                <a id="addArticle" lay-filter="addArticle" class="layui-btn layui-btn-normal">发表文章</a>
+                                <a onclick="layui.datalist.addData()" class="layui-btn layui-btn-normal">发表文章</a>
                             </div>
                         </div>
                     </div>
@@ -108,7 +105,7 @@
 <script type="text/javascript">
     layui.config({
         base: '/Public/js/Admin/'
-    }).use(['datalist','article']);
+    }).use('article');
 
 </script>
 </body>

@@ -83,7 +83,7 @@ layui.define(['element', 'layer', 'form'], function (exports) {
         loginHtml += '</div>';
         loginHtml += '<div class="layui-form-item" style="margin-top:25px;margin-bottom:0;">';
         loginHtml += '<div class="layui-input-block">';
-        loginHtml += ' <button class="layui-btn" style="width:230px;" lay-submit="" lay-filter="login">立即登录</button>';
+        loginHtml += ' <button class="layui-btn" style="width:230px;"  lay-submit  lay-filter="login">立即登录</button>';
         loginHtml += ' </div>';
         loginHtml += ' </div>';
         loginHtml += '</form>';
