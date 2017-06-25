@@ -13,9 +13,7 @@ class BlogDetailController extends Controller
     {
         $this->display();
     }
-<<<<<<< HEAD
-    
-=======
+
 
     /**
      * [getArticleById description]
@@ -30,5 +28,4 @@ class BlogDetailController extends Controller
         echo $result;
         // return json_encode($ret);
     }
->>>>>>> 05a06c21d47bcb1e50a16a917fe59f23960b1468
 }
